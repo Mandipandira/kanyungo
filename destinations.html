@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Discover the wonders of Zimbabwe with Kanyongo Safaris. Explore breathtaking destinations such as Kariba, Victoria Falls (Vic Falls), Hwange, Lake Chivero, Inyanga, Darwendale, Chimanimani, Gonarezhou, Matobo, Chinhoyi Curvers, Matopos, and more. We offer a wide range of tourism activities, comfortable accommodation, and delicious food. Join us for unforgettable group trips, individual adventures, camps, hiking, biking, skiing, bungee jumping, and much more.">
+	<meta name="theme-color" content="#030363">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+	 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="newnav.css">
+	<link rel="stylesheet" href="destination.css">
+	<link rel="stylesheet" href="whatsapp.css">
+	<title>Safari Destinations</title>
+
+	<style>
+		/* Add animation styles */
+		@keyframes slideDown {
+		  0% {
+			transform: translateY(-100%);
+		  }
+		  100% {
+			transform: translateY(0);
+		  }
+		}
+		@keyframes slideRight {
+		  0% {
+			transform: translateX(100%);
+		  }
+		  100% {
+			transform: translateX(0);
+		  }
+		}
+		/* Style the map container */
+		#map-container {
+		  position: fixed;
+		  top: 0;
+		  right: 0;
+		  height: 180px;
+		  border-left: 1px solid #ddd;
+		}
+	  </style>
+	
+</head>
+<body>
+	<header>
+		<div class="navbar">
+			<div class="logo">
+				<a href="#">Kanyongo Safaris</a>
+			</div>
+			<ul class="links">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="saf-about.html">About</a></li>
+				<li><a href="activities.html">Activities</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+			<a href="#" class="action_btn"></a>
+			<div class="toggle_btn" style="color: #fff;">
+				<i class="fas fa-bars"></i>
+			</div>
+		</div>
+			
+		<div class="dropdown_menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="saf-about.html">About</a></li>
+				<li><a href="activities.html">Activities</a></li>
+				<li><a href="contact.html">Contact</a></li>
+				<li><a href="#" class="action_btn">Get Started</a></li>
+		</div>
+	</header>
+
+	<script>
+		const toggleBtn = document.querySelector('.toggle_btn')
+		const toggleBtnIcon = document.querySelector('.toggle_btn i')
+		const dropDownMenu = document.querySelector('.dropdown_menu')
+
+		toggleBtn.onclick = function () {
+			dropDownMenu.classList.toggle('open')
+			const isOpen =dropDownMenu.classList.contains('open')
+
+			toggleBtnIcon.classList = isOpen
+				? 'fas fa-bars'
+				: 'fas fa-times'
+		}
+	</script>
+		<a href="#kariba">Kariba</a> | <a href="#mana">Mana Pools</a> | <a href="#darwendale">Darwendale</a> | <a href="#vic_falls">Vic Falls</a> | <a href="#hwange">Hwange</a> | <a href="#chimanimani">Chimanimani</a> | <a href="#nyanga">Inyanga</a> | <a href="#matobo">Matobo</a> | <a href="#gonarezhou">Gonarezhou</a>
+	<div id="top"><a href="#bottom">Bottom</a></div>
+
+	<!-- Search button -->
+	<button id="search-destinations">Search Destinations</button>
+  
+	<!-- Search form container -->
+	<div id="search-form-container" style="display: none;">
+	  <form id="search-form">
+		<input type="text" id="search-input" placeholder="Enter a location">
+		<button id="search-button">Search</button>
+	  </form>
+	</div>
+
+	<h1>Location Search</h1>
+    <form id="search-form" action="https://www.google.com/maps" method="get" target="_blank">
+        <label for="location-input">Enter a location:</label>
+        <input type="text" id="location-input" name="q" placeholder="E.g., New York City">
+        <button type="submit">Search</button>
+    </form>
+
+	
+	<!-- Map container -->
+	<div id="map-container" style="display: none;">
+	  <div id="map"></div>
+	</div>
+
+	<script>
+		// Wait for the DOM to load
+		document.addEventListener('DOMContentLoaded', () => {
+		  // Get the search button, form container, and map container
+		  const searchButton = document.getElementById('search-destinations');
+		  const formContainer = document.getElementById('search-form-container');
+		  const mapContainer = document.getElementById('map-container');
+		  
+		  // Add event listener to search button
+		  searchButton.addEventListener('click', () => {
+			// Animate the search form container to appear
+			formContainer.style.display = 'block';
+			formContainer.style.animation = 'slideDown 0.5s';
+		  });
+
+		  // Add event listener to search form
+		  const form = document.getElementById('search-form');
+		  form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const location = document.getElementById('search-input').value;
+			// Animate the map container to appear
+			mapContainer.style.display = 'block';
+			mapContainer.style.animation = 'slideRight 0.5s';
+			// Render the map
+			var map = L.map('map').setView([51.505, -0.09], 13);
+			L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				maxZoom: 19,
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+			}).addTo(map);[]
+			const marker = L.marker([51.505, -0.09]).addTo(map);
+			marker.bindPopup(location).openPopup();
+		  });
+		});
+	  </script>
+	
+
+	  <a href="https://wa.me/263713107257" class="whatsapp-button"><i class="fab fa-whatsapp"></i></a> 
+
+	  <style>
+	
+		textarea {
+		  width: 300px;
+		  height: 150px;
+		  margin: 20px auto;
+		}
+	
+		button {
+		  padding: 10px 20px;
+		  font-size: 16px;
+		}
+	  </style>
+
+	  <h1>Speech Functionality</h1>
+	  <strong>N.B</strong>: May not work on some browsers.
+
+  <textarea id="textToSpeech" placeholder="Paste your text here"></textarea>
+  <button onclick="playAudio()">Read</button>
+
+  <script>
+    // Function to play audio of the text
+    function playAudio() {
+      const textToSpeech = document.getElementById('textToSpeech').value;
+
+      // Create an <audio> element
+      const audio = new Audio();
+
+      // Create a Blob object from the text and set it as the audio source
+      const blob = new Blob([textToSpeech], { type: 'text/plain' });
+      audio.src = URL.createObjectURL(blob);
+
+      // Play the audio
+      audio.play();
+    }
+  </script>
+	
+
+
+	<section id="sect1">
+		<div class="container">
+			<div class="content">
+				<h1 style="background: #eee;" id="kariba">KARIBA DETAILS</h1>
+			</div>
+			<p style="font-weight: bold; font-size: 15px; text-align: left; color: brown;">Lake Kariba is amongst the largest man-made lakes in the world and it holds the record in the largest volume of water. For the first-time visitors, the magnitude of this dam is comparable to the size of an ocean. Nowhere else in Africa can one travel such great distances through such a lonely and undisturbed landscape. Wide-sweeping panoramas and beautiful sunsets set against the backdrop of the Zambezi Escarpment make for some of the world's best wildlife images.</p>
+			<div class="content">
+				<img src="expand_imgs/kdamboat.jpg">
+				<h2><i class="fas fa-map-marker-alt"></i></h2>
+				<h2 id="h2">Best Time to visit</h2>
+					<p>
+						Lake Kariba typically stays warm all year round. The hottest weather occurs throughout the southern hemisphere summer (October to April). Peak humidity coincides with the beginning of the rainy season in October. The rains, which often consist of short, severe afternoon thunderstorms, usually linger into April. The best time to visit Lake Kariba is between May and July. During this time, the weather is dry, calm, and slightly cool. Tiger fishing is good all year on Lake Kariba. The greatest time to go tiger fishing is in early summer (September to December). The rainy season is ideal for birdwatching, whereas the dry season (May-September) is ideal for land-based wildlife viewing. The wet season is ideal for birdwatching, whereas the dry season (May-September) is ideal for land-based wildlife viewing. There is no poor time to visit Kariba; there are simply better periods for certain activities than others.
+					</p>
+					<div style="margin-top: 10px;"><a href="contact.html" class="action_btn">Plan a trip</a></div>
+					
+			</div>
+		</div>
+	</section>
+
+	
+
+	<section id="sect1">
+		<div class="container">
+			<div class="content">
+				<h1 style="background: #eee;" id="mana">MANA POOLS DETAILS</h1>
+			</div>
+			<p style="font-weight: bold; font-size: 15px; text-align: left; color: brown;">Mana Pools National Park is a wildlife conservation area and national park in northern Zimbabwe, spanning 219,600 hectares (543,000 acres). It is a section of the lower Zambezi in Zimbabwe where the floodplain transforms into a vast stretch of lakes during each rainy season. As the lakes gradually dry up and recede, the location attracts numerous huge animals in search of water, making it one of Africa's most well-known game-viewing areas.</p>
+			<div class="content">
+				<img src="imgs/hero1.jpg">
+				<h2><i class="fas fa-map-marker-alt"></i></h2>
+				<h2 id="h2">Best Time to visit</h2>
+					<p>
+						Zimbabwe is well-known for being a year-round resort, but Mana Pools is an exception. The park is open all year, so you can enjoy true game experiences such as guided game walks, game drives, and game viewing at any time. However, during the rainy season, entrance to certain areas of the park is restricted. It is this "inaccessibility" that has kept this biosphere in such good condition.
+					</p>
+					<br />
+					<p>
+						The dry season (June to October) provides substantially better animal safari encounters because the bush has thinned down. During the dry season, wildlife frequently congregates on the banks of the Zambezi River to satisfy their thirst. Words simply fail to completely explain the safari experience that the ensemble of extreme isolation, pristine wilderness, and bright.
+					</p>
+					<div style="margin-top: 10px;"><a href="contact.html" class="action_btn">Plan a trip</a></div>
+				<h2 id="h2">Activities</h2>
+				<ul>
+					<li>Photographic Safari</li>
+					<li>Game drives</li>
+					<li>Game walks</li>
+					<li>Camping</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section id="sect1">
+		<div class="container">
+			<div class="content">
+				<h1 style="background: #eee;" id="darwendale">DARWENDALE RECREATIONAL PARK</h1>
+			</div>
+			<p style="font-weight: bold; font-size: 15px; text-align: left; color: brown;">Darwendale Recreational Park has an area of 11,200 hectares. The Lake Manyame water body, which is home to several aquatic species like as the Mozambican bream, bass fish, and hunyani salmon, covers little under three-quarters of this region. Darwendale Recreational Park is 76 kilometres west of Zimbabwe's capital, Harare.</p>
+			<div class="content">
+				<img src="expand_imgs/ani1.jpg">
+				<h2><i class="fas fa-map-marker-alt"></i></h2>
+				<h2 id="h2">Activities</h2>
+					<p>
+						Boating, bird watching, picnicking, nature treks, and fishing are among the activities accessible at the park. The Park is a beautiful fishing area noted for its bass fishing.
+					</p>
+					<div style="margin-top: 10px;"><a href="contact.html" class="action_btn">Plan a trip</a></div>
+					
+			</div>
+		</div>
+	</section>
+
+	<style>
+
+        h1 {
+          margin-top: 50px;
+        }
+    
+        .calendar {
+          margin-top: 20px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+    
+        .calendar .day {
+            width: 120px;
+            height: 120px;
+            border: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5px;
+          }
+      
+          .calendar .day .date {
+            font-weight: bold;
+          }
+        </style>
+    
+        <h1>Calenda</h1>
+
+		<div><i>KEY:</i></div>
+		<div>Cube 1 = Sunday</div>
+  
+        <div class="calendar"></div>
+
+    <script>
+        // Function to generate the calendar grid
+        function generateCalendar(year, month) {
+          const calendarContainer = document.querySelector('.calendar');
+          calendarContainer.innerHTML = '';
+    
+          const daysInMonth = new Date(year, month + 1, 0).getDate();
+          const firstDayIndex = new Date(year, month, 1).getDay();
+    
+          // Generate the calendar grid
+          for (let i = 0; i < firstDayIndex; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.classList.add('day');
+            calendarContainer.appendChild(emptyDay);
+          }
+    
+          for (let i = 1; i <= daysInMonth; i++) {
+            const day = document.createElement('div');
+            day.classList.add('day');
+            day.innerHTML = `
+              <div class="date">${i}</div>
+            `;
+            calendarContainer.appendChild(day);
+          }
+        }
+
+        // Get the current year and month
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth();
+
+    // Generate the initial calendar
+    generateCalendar(currentYear, currentMonth);
+  </script>
+
+
+	<section id="sect1">
+		<div class="container">
+			<div class="content">
+				<h1 style="background: #eee;" id="vic_falls">VICTORIA FALLS</h1>
+			</div>
+			<p style="font-weight: bold; font-size: 15px; text-align: left; color: brown;">The Smoke that thunders “Mosi Oa – Tunya” Victoria Falls is amongst one of the natural seven wonders of the natural world. It is a must see to all nature lovers. The Falls offers spectacular activities such as fresh water rafting, over flights of the falls, bungee jumping and many more. Other activities include game drives, boat cruises on the Zambezi River lion walks, shongololo train etc.</p>
+			<div class="content">
+				<img src="expand_imgs/falls3.jpg">
+				<h2><i class="fas fa-map-marker-alt"></i></h2>
+				<h2 id="h2">Best Time to visit</h2>
+					<p>
+						In our humble view, there is no one optimum time to visit the falls because each season offers distinct experiences based on what you want to accomplish on your Victoria Falls Safari Holiday. In our opinion, there is no one optimum time to visit the falls because each season offers distinct experiences based on what you want to accomplish on your Victoria Falls Safari Holiday
+					</p>
+					<p>
+					<br />
+						Summer is at its peak from December to March, and it rains heavily. In the afternoons, especially on hot days, expect tremendous thunderstorms. In December, the Zambezi River runs low. Because of high water levels, the white-water rafting season often ends in February.
+					</p>
+					<br />
+					<p>
+						High water levels frequently force Livingstone Island and Devil's Pool to close in January/February.The best time to visit Vic Falls is between April and June. The Zambezi River is in flood at the moment. As a result, the Falls are at their most stunning, with spray visible for miles.
+					</p>
+					<br />
+				<h2 id="h2">Activities</h2>
+				<ul>
+					<li>Shongololo train</li>
+					<li>Helicopter flights</li>
+					<li>Sundowner cruises</li>
+					<li>Art and craft shops</li>
+					<li>Bungee diving</li>
+					<li>Game drives</li>
+				</ul>
+				<br />
+				<p>
+					Prepare to get soaked! Rainbows are a common feature.The amount of spray and mist might reduce visibility from certain lookouts.July and August are peak seasons at Victoria Falls, with lower water levels and less spray, providing spectacular views of the falls and Livingstone Island, and the rafting season begins as soon as the water level drops to a safe level. Although it is winter in Zimbabwe, you can expect warm and sunny weather.Victoria Falls' dry season runs from September to November, with low water levels. The falls are clearly visible from Zimbabwe, although they may have dried up almost completely on the Zambian side. Livingstone Island and the famous Devil's Pool at the edge of the falls are open during peak white-water river rafting season (Zambia side).
+				</p>
+				<div style="margin-top: 10px;"><a href="contact.html" class="action_btn">Plan a trip</a></div>
+			</div>
+		</div>
+	</section>
+
+	<section id="sect1">
+		<div class="container">
+			<div class="content">
+				<h1 style="background: #eee;" id="hwange">MORE ON HWANGE</h1>
+			</div>
+			<p style="font-weight: bold; font-size: 15px; text-align: left; color: brown;">Hwange is famed for having almost 55,000 elephants! It also contains a large number of endangered species. Walking, game drives, and horseback riding are popular ways to observe animals in this area. Zambezi Cruise and Safaris works with a variety of safari camps and lodges in Hwange National Park as part of our state-wide wildlife tours.
+			</p>
+			<div class="content">
+				<img src="imgs/hwangggee.jpg">
+				<h2><i class="fas fa-map-marker-alt"></i></h2>
+				<h2 id="h2">Visiting time</h2>
+					<p>
+						The best time to visit Hwange National Park is from April to October. Wildlife watching is better during the dry season since the waterhole becomes a gathering site for animals, and the decreasing foliage makes them easier to notice. Zambezi Cruise Safaris offers an unforgettable wildlife tour through this stunning African environment.
+					</p>
+				<br />
+				<h2 id="h2">Activities</h2>
+				<ul>
+					<li>Game drive</li>
+					<li>Game walks</li>
+					<li>Bird watching</li>
+					<li>Star gazing</li>
+				</ul>
+					<div style="margin-top: 10px;"><a href="contact.html" class="action_btn">Plan a trip</a></div>
+					
+			</div>
+		</div>
+	</section>
+
+
+	<section id="sect1">
+		<div class="container">
+			<div class="content">
+				<h1 style="background: #eee;" id="chimanimani">CHIMANIMANI NATIONAL PARK</h1>
+			</div>
+			<p style="font-weight: bold; font-size: 15px; text-align: left; color: brown;">The Chimanimani National Park is Zimbabwe’s finest mountain wilderness. It covers 171 square kilometers at the southern point of the Eastern Highlands, stretching some 50 Km along the border with Mozambique.  It is a popular hiking destination with magnificent vista’s and many outstanding features which are unique to the area.</p>
+			<br />
+			<p>An area of rugged grandeur, it is distinguished by large peaks carved from a rifted quartzite block, regarded as an untouched and pristine wilderness which offers both day and multi-day hiking trails, with most of the park only accessible on foot.  The park is riddled with caves and rock overhangs which provide a great “free” alternative to overnight in.
+			</p>
+			<br />
+			<p>At the foot of the mountains, Base Camp is home to the Bridal Falls which is within the Eland Sanctuary and has spectacular views of the Porkpie Mountain Range.
+			</p>
+			<br />
+			<p>The trails from Corner Camp in the Northern end of the park offer a less physical challenge to walkers and hikers, and the Muhohwa River (and its crocodile free pools) feed the Muhohwa Falls which is an ideal spot for a picnic.
+			</p>
+
+			<p></p>
+			<br />
+
+			<h4><i>You imagine, we create!</i></h4>
+			<div class="content">
+				<img src="expand_imgs/logo.jpg">
+				<p><i class="fas fa-map-marker-alt"></i></p>
+				<br />
+				<p>GPS reference: 19⁰47′18.91″S 32⁰59′38.52″E</p>
+				<br />
+				<h2 id="h2">Visits</h2>
+					<p>
+						All year around Monday to Sunday 8am to 5pm.
+					</p>
+					<br />
+					<p>Fee: Entrance and accommodation fees are payable.</p>
+					<div style="margin-top: 10px;"><a href="contact.html" class="action_btn">Plan a trip</a></div>
+					
+			</div>
+		</div>
+	</section>
+
+
+	<section id="sect1">
+		<div class="container">
+			<div class="content">
+				<h1 style="background: #eee;" id="nyanga">INYANGA</h1>
+			</div>
+			<p style="font-weight: bold; font-size: 15px; text-align: left; color: brown;">Mount Nyangani (formerly Mount Inyangani) is the highest mountain in Zimbabwe at 2,592 metres or 8,504 feet. The mountain is located within Nyanga National Park in Nyanga District, about 110 km (68 mi) north-northeast of Mutare</p>
+			<br />
+			<p>Nyanga National Park lies in the north of Zimbabwe's Eastern Highlands. One of the first national parks to be declared in the country,[2] it contains the highest land in Zimbabwe, with green hills and perennial rivers.[3] Most of its terrain consists of rolling downland, sometimes lightly wooded, lying at altitudes between 1,800–2,593 metres (6,560–7,544 feet). Mount Nyangani, the highest point in Zimbabwe, lies in the centre of the park and Mutarazi Falls, Zimbabwe's highest waterfall, is in the south of the park. Nyanga National Park incorporates the former Mutarazi Falls National Park on its southern boundary.
+			</p>
+			<br />
+
+			<p></p>
+			<br />
+
+			<h4><i>You imagine, we create!</i></h4>
+			<img src="expand_imgs/logo.jpg" alt="" />
+			<div class="content">
+				<img src="new_img/nyanga_1.jpeg" alt="" />
+				<p><i class="fas fa-map-marker-alt"></i></p>
+				<br />
+				<p>Plus Code address: PP4G+326, Nyanga</p>
+				<br />
+				<h2 id="h2">Visits</h2>
+					<p>
+						It's best to go ... May to September
+The dry season (winter) is usually cool and sunny providing perfect walking weather, although it can be very cold at nights. The area is prone to cloudy conditions, sudden storms and mists in the hot wet season (summer) although these are normally short-lived.
+					</p>
+					<br />
+					<p>Fee: Entrance and accommodation fees are payable.</p>
+					<div style="margin-top: 10px;"><a href="contact.html" class="action_btn">Plan a trip</a></div>
+					
+			</div>
+		</div>
+	</section>
+
+
+	<section id="sect1">
+		<div class="container">
+			<div class="content">
+				<h1 style="background: #eee;" id="matobo">MATOBO</h1>
+			</div>
+			<p style="font-weight: bold; font-size: 15px; text-align: left; color: brown;">Matobo is a unique and fascinating region in Zimbabwe! Matobo is an area of great natural beauty, known for its stunning rock formations, diverse wildlife, and rich cultural heritage.</p>
+			<br />
+			<p>- Wildlife: Matobo National Park is home to a wide variety of wildlife, including black eagles, leopards, and black and white rhinoceros.
+
+			</p>
+			<br />
+			<p>- Culture: Matobo has significant cultural and spiritual importance, with numerous ancient rock art sites and shrines.
+			</p>
+			<br />
+			<p>- History: The area has a rich history, having been a stronghold of the Ndebele people and later a hub of colonial activity.
+			</p>
+
+			<p>- Tourism: Visitors can enjoy activities like hiking, rock climbing, game drives, and exploring the local communities and historical sites.
+			</p>
+			<br />
+
+			<h4><i>You imagine, we create!</i></h4>
+			<div class="content">
+				<img src="expand_imgs/matoboo1.jpg" title="Matobo offers a unique blend of natural beauty, cultural significance, and adventure, making it a captivating destination for anyone interested in exploring Zimbabwe's hidden gems!" alt="" />
+				<p><i class="fas fa-map-marker-alt"></i></p>
+				<br />
+				<p>- Location: Matobo is situated in southwestern Zimbabwe, about 35 kilometers south of Bulawayo, the country's second-largest city.
+				</p>
+				<br />
+				<h2 id="h2">Visits</h2>
+					<p>
+						All year around Monday to Sunday 8am to 5pm.
+					</p>
+					<br />
+					<p>Fee: Entrance and accommodation fees are payable.</p>
+					<div style="margin-top: 10px;"><a href="contact.html" class="action_btn">Plan a trip</a></div>
+					
+			</div>
+		</div>
+	</section>
+
+
+	<section id="sect1">
+		<div class="container">
+			<div class="content">
+				<h1 style="background: #eee;" id="gonarezhou">GONAREZHOU NATIONAL PARK</h1>
+			</div>
+			<p style="font-weight: bold; font-size: 15px; text-align: left; color: brown;">Gonarezhou National Park is a hidden gem in Zimbabwe! Located in the southeastern part of the country, it's the country's second-largest national park, covering an area of approximately 5,053 square kilometers. Below are some exciting facts about Gonarezhou:</p>
+			<br />
+			<p>Name: Gonarezhou means "Place of Many Elephants" in the local Shona language, which is fitting, as it's home to a large population of these majestic creatures.
+			</p>
+			<br />
+			<p>- Chilojo Cliffs: The park's scenic Chilojo Cliffs offer breathtaking views of the Runde River and the surrounding landscape.
+			</p>
+			<br />
+			<p>- Runde River: The river forms the park's southern boundary and provides a lifeline for the wildlife during the dry season.
+			</p>
+
+			<p>- Mwenezi River: The Mwenezi River flows through the park, supporting a lush riverine ecosystem.
+			</p>
+			<br />
+
+			<p>- Human history: Gonarezhou has a rich cultural heritage, with evidence of ancient human habitation and trade routes.
+			</p>
+			<br />
+
+			<p>- Tourism: Visitors can enjoy activities like game drives, walking safaris, and camping, with various accommodation options available.
+			</p>
+			<br />
+
+			<p>- Location: The park is situated in the Masvingo and Chiredzi districts, near the Mozambique border.
+			</p>
+			<br />
+
+			<h4><i>You imagine, we create!</i></h4>
+			<div class="content">
+				<img src="expand_imgs/matobo-rock.jpg">
+				<p><i class="fas fa-map-marker-alt"></i></p>
+				<br />
+				<p>GPS reference: 19</p>
+				<br />
+				<h2 id="h2">Visits</h2>
+					<p>
+						All year around Monday to Sunday 8am to 5pm.
+					</p>
+					<br />
+					<p>Fee: Entrance and accommodation fees are payable.</p>
+					<h4>Cost to enter Gonarezhou as a documented Zimbabwean:</h4>
+					<ul>
+						<li>USD08.00 for locals per person</li>
+						<li>USD05.00 for the vehicle</li>
+					</ul>
+					<div style="margin-top: 10px;"><a href="contact.html" class="action_btn">Plan a trip</a></div>
+				<h2>Wildlife:</h2>
+				<ul>
+					<li>Large herds of elephants</li>
+					<li>Cape buffalo</li>
+					<li>Antelope species like nyala, kudu, and impala</li>
+					<li>Predators like lions, leopards, and cheetahs</li>
+					<li>Over 400 bird species</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<div id="bottom"><a href="#top">Top</a></div>
+
+
+
+	<div class="footer">
+
+        <div class="nxt2nxt">
+          <p>
+            <div style="font-size: 30px;"><i class="fas fa-map-marker-alt">Location:</i></div>
+            <div>1 Acacia Drive,</div>
+            <div>Heights, Kariba</div>
+            <div>Zimbabwe</div>
+      
+            <div class="social-icons">
+              <i class="fas fa-envelope"></i>
+              <i class="fas fa-phone"></i>
+            </div>
+            <a href="tel: 0773224064" class="call-link">+263 77 322 4064</a>
+          </p>
+        </div>
+      
+        
+            
+          
+        <div class="nxt2nxt">
+          <p>
+            <div style="font-size: 30px;">Kanyongo Safaris</div>
+            <div>Wildlife</div>
+            <div><a href="index.html">Home</a></div>
+            <div><a href="accommodation.html">Accomodation</a></div>
+            <div><a href="#">Safari tours</a></div>
+          </p>
+        </div>
+      
+        <div class="nxt2nxt">
+          <div style="font-size: 30px;">Social Handles:</div>
+      
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+			<a href="https://www.instagram.com/kanyongosafaris"><i class="fab fa-instagram"></i></a>
+			<a href="https://www.youtube.com/@KanyongoSafaris"><i class="fab fa-youtube"></i></a>
+			<a href="https://wa.me/+263773224064"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+      
+      </div>
+
+	  <i class="fa fa-code"></i>
+  Site by lanso: <i class="fab fa-whatsapp"></i> <a href="https://wa.me/+263714581271">+263714581271</a>
+  <a href="https://pin.it/2wCFs9CY2"><i class="fab fa-pinterest"></i></a> | <a href="https://zw.linkedin.com/in/adrian-mandipandira-707b28290"><i class="fab fa-linkedin"></i></a> | <a href="https://www.instagram.com/mandipandira?utm_source=qr&r=nametag"><i class="fab fa-instagram"></i></a> | <a href="https://www.facebook.com/share/mjvDG9TDqBZfEJkS/?mibextid=qi2Omg"><i class="fab fa-facebook"></i></a>
+
+
+
+	
+
+
+
+</body>
+</html>

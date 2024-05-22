@@ -1,0 +1,137 @@
+.container_icon_base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+    color: #e2c106;
+  }
+  
+  .icon i {
+    margin-bottom: 10px;
+  }
+  
+  .icon span {
+    text-align: center;
+  }
+
+  .hostels h2 {
+    color: gold;
+  }
+
+.footer {
+	background-image: url('imgs/IMG-20240407-WA0088.jpg');
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	margin-top: 10px;
+}
+
+.nxt2nxt > a {
+    color: #bbb;
+}
+
+.nxt2nxt > p,a {
+    color: #bbb;
+}
+
+.nxt2nxt {
+	width: 200px;
+	height: auto;
+	margin-right: 10px;
+	margin-top: 20px;
+	padding: 2px;
+	color: silver;
+}
+
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .image-container {
+    margin: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: calc(33.33% - 40px);
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .image-container p {
+    text-align: center;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .image-container {
+      width: calc(50% - 40px);
+    }
+  }
+  
+  @media only screen and (max-width: 400px) {
+    .image-container {
+      width: 100%;
+    }
+  }
+
+  
+
+
+@media (max-width: 600px) {
+    .hero_p {
+        width: 65%;
+    }
+
+    .hero {
+        font-size: 32px;
+    }
+
+    #features-itm {
+        opacity: 0.5;
+    }
+    
+    #features-itm:hover {
+        opacity: 20;
+    }
+}
+
+@media (max-width: 10000px) {
+    .navbar-menu {
+        display: none;
+    }
+    
+    .navbar-signup {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+@media (max-width: 500px) {
+	.footer {
+		display: grid;
+	}
+
+	.nxt2nxt {
+		display: block;
+	}
+}

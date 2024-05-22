@@ -1,0 +1,94 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+nav {
+	position: fixed;
+	display: flex;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: white;
+	color: black;
+	text-align: center;
+	align-items: center;
+}
+
+#dis {
+	display: inline-block;
+}
+
+.nav-item {
+	
+	margin: 0 20px;
+}
+
+.nav-item i {
+	font-size: 24px;
+}
+
+.nav-item span {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.nav-item span {
+		display: inline-block;
+	}
+}
+
+section {
+	padding: 20px;
+}
+
+h2 {
+	margin-top: 0;
+}
+
+.activity-container {
+	overflow-x: auto;
+	white-space: nowrap;
+	padding: 20px;
+}
+
+.activity-item {
+	display: inline-block;
+	margin: 0 20px;
+	border: 1px solid #ddd;
+	padding: 20px;
+	width: 200px;
+	vertical-align: top;
+}
+
+.activity-item img {
+	width: 100%;
+	height: 150px;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.activity-item h3 {
+	font-weight: bold;
+	margin-top: 0;
+}
+
+.activity-item p {
+	margin-bottom: 20px;
+    width: auto;
+}
+
+/* Add animation to activity items */
+.activity-item {
+	animation: slide-in 0.5s ease-in-out;
+}
+
+@keyframes slide-in {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}

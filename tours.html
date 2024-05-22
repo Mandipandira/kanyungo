@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="navsidebars.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="whatsapp.css">
+  <link src="toggle.js">
+  <title>Safari Tours</title>
+  <style>
+    /* General Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #b19f04;
+    }
+    
+    /* Main Content Styles */
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-top: 90px;
+    }
+    
+    h1 {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    p {
+      color: #555;
+      margin-bottom: 10px;
+    }
+    
+    .expandable-section {
+      margin-bottom: 20px;
+    }
+    
+    .expandable-section p {
+      overflow: hidden;
+      max-height: 80px;
+      transition: max-height 0.3s ease;
+    }
+    
+    .expandable-section .read-more {
+      color: #007bff;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 10px;
+      transition: color 0.3s ease;
+    }
+    
+    .expandable-section .read-more:hover {
+      color: #0056b3;
+    }
+    
+    /* Video Section Styles */
+    .video-section {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    
+    .video-thumbnail {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+    
+    .video-play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .video-play-button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    .video-play-button:before {
+      content: '';
+      border-style: solid;
+      border-width: 12px 0 12px 20px;
+      border-color: transparent transparent transparent #fff;
+    }
+
+   
+    
+    /* Animation Styles */
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    .animated {
+      animation: fade-in 1s ease;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+
+  <script>
+
+    function toggleSidebar() {
+      var sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('sidebar-open');
+    }
+
+  </script>
+
+</head>
+<body>
+
+  <section>
+    <nav class="navbar" style="position: absolute;">
+      <div class="navbar-brand">
+          <img src="expand_imgs/logo.jpg" style="height: auto; width: 150px;">
+      </div>
+      <ul class="navbar-menu">
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+         
+          <div id="link">
+              <div class="login">
+                  <button id="login"></button>
+              </div>
+          </div>
+          <div id="link">    
+              <div class="signup">
+                  <button id="signup"></button>
+              </div>
+          </div>
+      </ul>
+      <div class="hamburger" onclick="toggleSidebar()">
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+  </nav>
+  
+  <div class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+          <img src="" style="margin-left: 0; width: 100%;">
+      </div>
+      <ul class="sidebar-menu">
+          
+          <li class="side-list">
+              <span class="fa-stack">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-home fa-stack-1x fa-inverse" id="fasfa"></i>
+              </span>
+              <span class="gap"></span>
+              <a href="index.html">Home</a>
+          </li>
+          <hr>
+          <li class="side-list">
+              <span class="fa-stack">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-campground fa-stack-1x fa-inverse" id="fasfa"></i>
+              </span>
+              <span class="gap"></span>
+              <a href="accommodation.html">Accomodation</a>
+          </li>
+          <hr>
+          <li class="side-list">
+              <span class="fa-stack">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-graduation-cap fa-stack-1x fa-inverse" id="fasfa"></i>
+              </span>
+              <span class="gap"></span>
+              <a href="tours.html">Safari Tours</a>
+          </li>
+          <hr>
+          <li class="side-list">
+              <span class="fa-stack">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-hiking fa-stack-1x fa-inverse" id="fasfa"></i>
+              </span>
+              <span class="gap"></span>
+              <a href="activities.html">Activities</a>
+          </li>
+          <hr>
+          <li class="side-list">
+              <span class="fa-stack">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-plane fa-stack-1x fa-inverse" id="fasfa"></i>
+              </span>
+              <span class="gap"></span>
+              <a href="destinations.html">Destinations</a>
+          </li>
+          <hr>
+          
+          <hr>
+          <li class="side-list">
+              <span class="fa-stack">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-phone fa-stack-1x fa-inverse" id="fasfa"></i>
+              </span>
+              <span class="gap"></span>
+              <a href="contact.html">Contact</a>
+          </li>
+      </ul>
+  
+  </div>
+  
+  </section>
+
+  <a href="https://wa.me/263713107257" class="whatsapp-button"><i class="fab fa-whatsapp"></i></a>
+
+  <div class="container">
+    <h1>Welcome to Safari Tours</h1>
+    
+    <div class="expandable-section">
+      <h2>The Hwange Tour</h2>
+      <p>As you venture into the untamed expanse of Hwange National Park, the thrill of the unknown beckons. This iconic Zimbabwean wilderness, touted as one of Africa's largest and most revered game reserves, promises an odyssey like no other. The vast, open plains stretch out before you like an emerald canvas, painted with an intricate tapestry of life.
+      </p>
+      <p class="expanded-text">Your journey begins with a guided game drive, navigating the diverse habitats that cradle an astounding array of creatures. The Big Five – lion, leopard, rhinoceros, elephant, and Cape buffalo – reign supreme, while antelopes, giraffes, and over 400 species of birds flit about, weaving a rich narrative of survival and adaptation.
+      </p>
+      <p class="expanded-text">But Hwange offers more than just a passive observation of wildlife; it invites you to immerse yourself in the primal rhythms of the African savannah. Embark on a walking safari, and the rustle of leaves beneath your feet will transport you to a realm where humans are mere spectators, and the land is ruled by the untamed and the free. Visit the famed Nyamandhlovu Pan, and the majesty of elephants and lions will leave you awestruck, their stories etched in the dusty terrain like ancient hieroglyphs.
+      </p>
+      <p class="expanded-text">As dusk descends, the campsites and lodges become a haven for weary travelers, where tales of the day's adventures are swapped, and the local cuisine kindles a sense of community. And so, Hwange National Park stands as a testament to the untamed beauty of Africa, a siren's call to those who dare to venture into the unknown, and emerge forever changed by the experience.</p>
+
+      <p class="read-more">Read more</p>
+    
+  
+    
+    <div class="video-section">
+      <h2>Hwange Game Watch</h2>
+      <img class="video-thumbnail" src="imgs/hwange.jpg" alt="Video Thumbnail">
+      <div class="video-play-button"></div>
+    </div>
+  </div>
+
+<hr>
+  <div class="expandable-section">
+    <h2>Mana Pools Tour</h2>
+    <p>A tour or trip to Mana Pools would be an exhilarating adventure! Mana Pools is a UNESCO World Heritage Site and one of Africa's most renowned game reserves, located in northern Zimbabwe. As you enter the reserve, you'll be struck by the stunning scenery and abundant wildlife.
+    </p>
+    <p class="expanded-text">Your trip could start with a guided walking safari, where you'll trek through the lush forests and grasslands, spotting iconic animals like elephants, lions, and leopards. The guides are expert trackers, and you'll learn about the animals' habits and habitats.
+    </p>
+    <p class="expanded-text">Next, take a canoeing trip down the Zambezi River, which forms the border with Zambia. Paddle past hippos, crocodiles, and a variety of bird species, including the majestic African fish eagle.
+    </p>
+    <p class="expanded-text">Afterward, head to one of the many campsites or lodges, where you can relax and enjoy the serene surroundings. Take a sunset cruise or a night drive to spot nocturnal animals like hyenas and genets.</p>
+    <p class="expanded-text">
+      Mana Pools is known for its "Big Five" sightings, and your guides will help you spot these incredible creatures up close. With its stunning scenery, diverse wildlife, and expert guides, a trip to Mana Pools is an unforgettable experience for any nature lover or adventure seeker!
+    </p>
+    <p class="read-more">Read more</Here's the continuation of the HTML snippet: I want us to add a youtube video from kanyongo channel.
+
+html
+  </div>
+  
+  <div class="video-section">
+    <h2>Mana Pools Guide</h2>
+    <img class="video-thumbnail" src="new_img/mana.jpg" alt="Video Thumbnail">
+    <div class="video-play-button"></div>
+  </div>
+</div>
+
+<hr>
+<div class="expandable-section">
+  <h2>Kariba</h2>
+  <p>A tour or trip to Kariba would be an unforgettable experience! Kariba is a stunning town located on the shores of Lake Kariba, which is one of the largest man-made lakes in the world. As you arrive, you'll be greeted by the breathtaking views of the lake and the surrounding hills.
+  </p>
+  <p class="expanded-text">Your trip could start with a relaxing boat cruise on the lake, where you can spot a variety of wildlife, including hippos, crocodiles, and over 40 species of fish. You might even see a majestic fish eagle soaring overhead!
+  </p>
+  <p class="expanded-text">Next, you could visit the Kariba Dam Wall, an engineering marvel that's an impressive sight. Take a guided tour to learn about its history and significance.
+  </p>
+  <p class="expanded-text">Afterward, head to one of the many nearby game reserves or national parks, such as the Kariba National Park or the Matusadona National Park, for a thrilling safari experience. Get up close and personal with the Big Five – lion, leopard, rhinoceros, elephant, and Cape buffalo – and enjoy the stunning scenery.
+  </p>
+  <p class="expanded-text">In the evening, unwind at one of the many lodges or resorts, where you can enjoy local cuisine and traditional music. Don't forget to try some of the local dishes, such as sadza or stew!
+  </p>
+  <p class="expanded-text">Overall, a trip to Kariba offers a unique blend of natural beauty, wildlife, and culture, making it an unforgettable adventure in Zimbabwe!</p>
+  <p class="read-more">Read more</Here's the continuation of the HTML snippet: I want us to add a youtube video from kanyongo channel.
+
+html
+</div>
+
+<div class="video-section">
+  <h2>Explore Kariba</h2>
+  <img class="video-thumbnail" src="expand_imgs/spec1.jpg" alt="Video Thumbnail">
+  <div class="video-play-button"></div>
+</div>
+</div>
+
+<hr>
+<div class="expandable-section">
+  <h2>Explore Matobo</h2>
+  <p>A tour to Matobo is like embarking on a journey through time, where the rugged landscape, rich history, and vibrant culture will transport you to a world of wonder and discovery. Located in southern Zimbabwe, Matobo National Park is a treasure trove of natural and cultural wonders, waiting to be uncovered.
+  </p>
+  <p class="expanded-text">As you venture into the park, the majestic granite hills and balancing rocks will leave you awestruck, their unique formations a testament to the region's fascinating geology. Take a hike through the scenic trails, and the stunning vistas and diverse wildlife will keep you enthralled. Visit the renowned rock art sites, and the ancient paintings will reveal the secrets of the San people, who once called this land home.
+  </p>
+  <p class="expanded-text">But Matobo is more than just a natural wonder – it's a cultural and historical hub. Explore the nearby villages, and the warm hospitality of the locals will make you feel like a welcomed guest. Learn about their traditions, and the stories of their ancestors will come alive. Visit the grave of Cecil Rhodes, the famous explorer and politician, and the complex history of the region will become clearer.</p>
+  <p class="expanded-text">Whether you're a nature lover, a history buff, or simply a curious traveler, Matobo has something for everyone. So come, and let the rugged beauty, rich culture, and fascinating history of this enchanting destination leave you with memories that will last a lifetime.</p>
+  <p class="read-more">Read more</Here's the continuation of the HTML snippet: I want us to add a youtube video from kanyongo channel.
+
+html
+</div>
+
+
+<div class="video-section">
+  <h2>Matobo</h2>
+  <img class="video-thumbnail" src="expand_imgs/matoboo.jpg" alt="Video Thumbnail">
+  <div class="video-play-button"></div>
+</div>
+</div>
+<hr>
+
+
+<hr>
+<div class="expandable-section">
+  <h2>Explore Gonarezhou</h2>
+  <p>Venturing into Gonarezhou National Park is like unraveling a hidden treasure trove of untamed beauty and unbridled adventure. Tucked away in southeastern Zimbabwe, this enigmatic wilderness beckons the intrepid traveler to immerse themselves in its unspoiled grandeur. As you step into this realm, the rugged landscape unfolds like a masterpiece of nature's artistry, with the majestic Chilojo Cliffs standing sentinel over the savannah.
+  </p>
+  <p class="expanded-text">Your journey begins with a thrilling game drive, navigating the park's diverse habitats in search of the elusive Big Five – lion, leopard, rhinoceros, elephant, and Cape buffalo. The thrill of the hunt is matched only by the awe-inspiring scenery, as the Mwenezi River winds its way through the landscape like a shimmering silver ribbon.
+  </p>
+  <p class="expanded-text">But Gonarezhou offers more than just a glimpse of wildlife; it invites you to delve into the very soul of the African wilderness. Take a walking safari, and the rustle of leaves beneath your feet will transport you to a realm where humans are mere observers, and the land is ruled by the untamed and the free. As the sun dips below the horizon, the campsites and lodges become a haven for weary travelers, where tales of the day's adventures are swapped, and the local cuisine kindles a sense of community. And so, Gonarezhou National Park stands as a testament to the untamed beauty of Africa, a siren's call to those who dare to venture into the unknown, and emerge forever changed by the experience.</p>
+  <p class="read-more">Read more</Here's the continuation of the HTML snippet: I want us to add a youtube video from kanyongo channel.
+
+html
+</div>
+
+
+<div class="video-section">
+  <h2>Gonarezhou</h2>
+  <img class="video-thumbnail" src="expand_imgs/matobo.jpg" alt="Video Thumbnail">
+  <div class="video-play-button"></div>
+</div>
+</div>
+<hr>
+
+
+<hr>
+<div class="expandable-section">
+  <h2>Explore Chimanimani</h2>
+  <p>Embarking on a journey to Chimanimani is like stepping into a mystical realm, where the whispers of ancient secrets linger in the misty air. Nestled in the eastern highlands of Zimbabwe, this enchanting destination beckons adventurers to explore its untamed beauty and unravel its hidden treasures. As you venture into the Chimanimani National Park, the rugged landscape unfolds like a canvas of contrasts, with towering peaks, lush valleys, and sparkling waterfalls.
+  </p>
+  <p class="expanded-text">Your tour begins with a hike through the verdant forests, where the scent of wildflowers and the songs of tropical birds transport you to a world untouched by time. The terrain shifts and twists, leading you to the iconic Bridal Veil Falls, where the roar of the water and the spray on your skin will leave you awestruck. As you ascend higher, the vistas expand, revealing the majestic peaks of Mount Binga and Mount Nyangani, their rugged beauty a testament to the region's geological history.
+  </p>
+  <p class="expanded-text">However, Chimanimani offers more than just breathtaking scenery; it invites you to immerse yourself in the local culture and traditions. Visit the nearby villages, and the warm hospitality of the people will make you feel like a welcomed guest. Share in their stories, and the secrets of the land will slowly reveal themselves. And as the sun sets over the mountains, the stars twinkle like diamonds in the night sky, reminding you that some experiences are truly timeless.</p>
+  <p class="read-more">Read more</Here's the continuation of the HTML snippet: I want us to add a youtube video from kanyongo channel.
+
+html
+</div>
+
+
+<div class="video-section">
+  <h2>Chimanimani</h2>
+  <img class="video-thumbnail" src="expand_imgs/sundowner.jpg" alt="Video Thumbnail">
+  <div class="video-play-button"></div>
+</div>
+</div>
+<hr>
+
+
+<hr>
+<div class="expandable-section">
+  <h2>Explore Inyanga</h2>
+  <p>Inyanga, a hidden gem nestled in Zimbabwe's Eastern Highlands, beckons travelers to experience its captivating blend of natural beauty, rich history, and cultural heritage. A tour to Inyanga is like unraveling a treasure trove of secrets, as the region's diverse landscapes and attractions unfold like a tapestry of wonder.
+  </p>
+  <p class="expanded-text">Your journey begins in the Inyanga Mountains, where the scenic vistas and rolling hills evoke a sense of serenity. Hike through the lush forests, and the whispers of ancient traditions will transport you to a world of mystique and legend. Visit the Inyanga Ruins, a testament to the region's storied past, and uncover the secrets of the ancient civilization that once thrived here.
+  </p>
+  <p class="expanded-text">Next, explore the Nyanga National Park, where the majestic mountains, sparkling waterfalls, and diverse wildlife will leave you awestruck. Take a boat ride on the Nyanga Dam, and the tranquility of the surroundings will soothe your soul. As you delve deeper into the local culture, the warm hospitality of the people will make you feel like a welcomed guest, sharing in their stories and traditions.
+  </p>
+  <p class="expanded-text">Inyanga is a destination that will leave you enchanted, with its unique blend of natural beauty, history, and culture. It's a place where the past meets the present, and the boundaries of time and space blur. So come, and let Inyanga's secrets unfold before you, like a treasure chest waiting to be discovered.</p>
+  <p class="read-more">Read more</Here's the continuation of the HTML snippet: I want us to add a youtube video from kanyongo channel.
+
+html
+</div>
+
+
+<div class="video-section">
+  <h2>Inyanga</h2>
+  <img class="video-thumbnail" src="expand_imgs/sundowner5.jpg" alt="Video Thumbnail">
+  <div class="video-play-button"></div>
+</div>
+</div>
+<hr>
+
+<hr>
+<div class="expandable-section">
+  <h2>A tour to Lake Chivero</h2>
+  <p>A tour to Lake Chivero is like embarking on a tranquil odyssey, where the serene waters and lush surroundings will transport you to a world of peace and relaxation. Located just a stone's throw from Harare, this picturesque lake is a hidden gem waiting to be discovered.
+  </p>
+  <p class="expanded-text">As you arrive at the lake, the sparkling waters will greet you like a warm embrace, inviting you to leave your worries behind. Take a boat ride across the lake, and the gentle lapping of the waves against the shore will lull you into a state of serenity. The surrounding hills, adorned with lush vegetation, will provide a stunning backdrop to your journey, as if nature's own canvas has been painted with vibrant colors.
+  </p>
+  <p class="expanded-text">As you explore the lake's many inlets and coves, the calls of birds and the rustling of leaves will be your constant companions, reminding you of the beauty and wonder of the natural world. Take a moment to breathe in the fresh air, and the stresses of everyday life will melt away like mist on a summer morning.
+  </p>
+  <p class="expanded-text">Whether you're looking for a romantic getaway, a family adventure, or simply a solo retreat, Lake Chivero has something for everyone. So come, and let the gentle waters and soothing surroundings of this enchanting lake wash over you, rejuvenating your spirit and nourishing your soul.</p>
+  <p class="read-more">Read more</Here's the continuation of the HTML snippet: I want us to add a youtube video from kanyongo channel.
+
+html
+</div>
+
+
+<div class="video-section">
+  <h2>Lake Chivero</h2>
+  <img class="video-thumbnail" src="expand_imgs/logo.jpg" alt="Video Thumbnail">
+  <div class="video-play-button"></div>
+</div>
+</div>
+<hr>
+
+<hr>
+<div class="expandable-section">
+  <h2>Explore Victoria Falls</h2>
+  <p>A tour to Victoria Falls is like standing at the edge of a thunderous apocalypse, where the raw power and majesty of nature will leave you awestruck and humbled. As you approach the falls, the distant roar grows louder, a primal drumbeat that echoes through the soul. The air is electric with anticipation, and the misty veil that rises from the chasm below hints at the wonder that awaits.
+  </p>
+  <p class="expanded-text">As you step out onto the precipice, the sheer force of the falls slaps you in the face, a 108-meter torrent of water that thunders over the edge of the Zambezi Gorge. The spray creates a perpetual rainbow, a kaleidoscope of colors that dance in the misty air. The falls' mighty roar is almost deafening, a cacophony of sound that reverberates deep within your chest.
+  </p>
+  <p class="expanded-text">But Victoria Falls is more than just a spectacle – it's an experience that will leave you breathless and inspired. Take a helicopter ride over the falls, and the bird's-eye view will reveal the stunning geography of the region. Or, take a boat tour to the edge of the falls, and the thrill of being so close to the action will leave you exhilarated. Whether you're an adventure-seeker or simply a lover of nature's beauty, Victoria Falls is a destination that will leave you changed forever. So come, and let the mighty Zambezi River leave its indelible mark on your soul.</p>
+  <p class="read-more">Read more</Here's the continuation of the HTML snippet: I want us to add a youtube video from kanyongo channel.
+
+html
+</div>
+
+
+<div class="video-section">
+  <h2>Vic Falls</h2>
+  <img class="video-thumbnail" src="expand_imgs/falls.jpg" alt="Video Thumbnail">
+  <div class="video-play-button"></div>
+</div>
+</div>
+<hr>
+
+
+
+</div>
+
+<hr style="border-width: 5px; border-color: #333;">
+
+
+<div class="footer" style="background-image: URL('sunset.jpg')">
+
+  <div class="nxt2nxt">
+    <p>
+      <div style="font-size: 30px;"><i class="fas fa-map-marker-alt">Location:</i></div>
+      <div>1 Acacia Drive,</div>
+      <div>Heights, Kariba</div>
+      <div>Zimbabwe</div>
+
+      <div class="social-icons">
+        <i class="fas fa-envelope"></i>
+        <i class="fas fa-phone"></i>
+      </div>
+      <a href="tel: 0773224064" class="call-link">+263 77 322 4064</a>
+    </p>
+  </div>
+
+  
+      
+    
+  <div class="nxt2nxt">
+    <p>
+      <div style="font-size: 30px;">Kanyongo Safaris</div>
+      <div>Wildlife</div>
+      <div><a href="index.html">Home</a></div>
+      <div><a href="accommodation.html">Accomodation</a></div>
+      <div><a href="#">Safari tours</a></div>
+    </p>
+  </div>
+
+  <div class="nxt2nxt">
+    <div style="font-size: 30px;">Social Handles:</div>
+
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/kanyongosafaris"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@KanyongoSafaris"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/+263773224064"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+
+</div>
+
+<i class="fa fa-code"></i>
+  Site by lanso: <i class="fab fa-whatsapp"></i> <a href="https://wa.me/+263714581271">+263714581271</a>
+  <a href="https://pin.it/2wCFs9CY2"><i class="fab fa-pinterest"></i></a> | <a href="https://zw.linkedin.com/in/adrian-mandipandira-707b28290"><i class="fab fa-linkedin"></i></a> | <a href="https://www.instagram.com/mandipandira?utm_source=qr&r=nametag"><i class="fab fa-instagram"></i></a> | <a href="https://www.facebook.com/share/mjvDG9TDqBZfEJkS/?mibextid=qi2Omg"><i class="fab fa-facebook"></i></a>
+  
+  <script>
+    // Expandable Text Section
+    const readMoreButtons = document.querySelectorAll('.read-more');
+    
+    readMoreButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const expandedText = button.previousElementSibling;
+        expandedText.classList.toggle('expanded-text');
+        button.textContent = expandedText.classList.contains('expanded-text') ? 'Read less' : 'Read more';
+      });
+    });
+    
+    // Video Section
+    const videoSection = document.querySelector('.video-section');
+    const videoThumbnail = videoSection.querySelector('.video-thumbnail');
+    const videoPlayButton = videoSection.querySelector('.video-play-button');
+    
+    videoPlayButton.addEventListener('click', () => {
+      videoThumbnail.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>';
+      videoThumbnail.classList.add('animated');
+      videoPlayButton.style.display = 'none';
+    });
+  </script>
+    
+
+
+</body>
+</html>

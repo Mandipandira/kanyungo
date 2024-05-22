@@ -1,0 +1,29 @@
+.container {
+    position: relative;
+    max-width: 500px;
+}
+
+.thumbnail {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: white;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.video {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+

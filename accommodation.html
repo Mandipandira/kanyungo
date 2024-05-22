@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Welcome to Kanyongo Safaris, your gateway to extraordinary tourism experiences in Zimbabwe. Embark on a journey to Kariba, Victoria Falls (Vic Falls), Hwange, Lake Chivero, Inyanga, Darwendale, Chimanimani, Gonarezhou, Matobo, Chinhoyi Curvers, Matopos, and other captivating destinations. Our comprehensive range of tourism activities includes group trips, individual adventures, camps, hiking, biking, skiing, bungee jumping, and more. Immerse yourself in Zimbabwe's natural beauty, abundant wildlife, and rich cultural heritage. Enjoy comfortable accommodation and indulge in tantalizing local cuisine. Book your dream vacation with Kanyongo Safaris today and create memories that will last a lifetime.">
+
+  <title>Hostels and Accommodation</title>
+  <link rel="stylesheet" href="navsidebars.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="accomodation.css">
+  <link rel="stylesheet" href="whatsapp.css">
+  <style>
+    /* General Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #b19f04;
+    }
+
+    .navbar {
+      background-color: white;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      position: fixed;
+      top: 0px;
+      width: 100%;
+      opacity: 10;
+  }
+
+  .navbar-brand {
+      font-weight: bold;
+      font-size: 20px;
+      margin-left: 10px;
+  }
+
+  .navbar-menu {
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+  }
+
+  .navbar-menu li {
+      margin: 0 10px;
+  }
+
+  .navbar-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+  }
+
+  .navbar-menu a:hover {
+      text-decoration: underline;
+  }
+
+  .navbar-signup {
+      margin-right: 10px;
+  }
+
+  .navbar-signup a {
+      background-color: #fff;
+      color: #333;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+  }
+
+  .sidebar {
+      font-family: Arial, Helvetica, sans-serif;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: rgba(24, 22, 22, 0.479);
+      color: #fff;
+      transition: left 0.3s;
+      overflow-y: auto;
+  }
+
+  .sidebar-open {
+      left: 0;
+  }
+
+  .sidebar-brand {
+      font-weight: bold;
+      font-size: 20px;
+      padding: 10px;
+  }
+
+  .sidebar-menu {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px 0;
+  }
+
+  .sidebar-menu li {
+      margin-bottom: 10px;
+  }
+
+  .sidebar-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 5px;
+      display: block;
+  }
+
+  .side-list {
+      background: #333;
+      color: black;
+  }
+
+  #fasfa {
+      background: #333;
+      color: rgb(0, 140, 255);
+  }
+
+  hr {
+      color: rgb(0, 140, 255);
+  }
+
+  .hamburger {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+  }
+
+  .hamburger span {
+      width: 100%;
+      height: 2px;
+      margin-bottom: 4px;
+      margin-right: 40px;
+      background-color: rgb(0, 140, 255);
+  }
+
+  @media (max-width: 10000px) {
+    .navbar-menu {
+        display: none;
+    }
+
+    .navbar-signup {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+    
+    /* Toggle Bar Styles */
+    .toggle-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 20px;
+      z-index: 999;
+    }
+    
+    .toggle-bar-container .toggle-bar-text {
+      margin-left: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .toggle-bar-container .cancel-icon {
+      margin-left: auto;
+      cursor: pointer;
+    }
+    
+    /* Main Content Styles */
+    .container {
+      max-width: 900px;
+      margin: 60px auto 20px;
+      margin-top: 100px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      font-size: 32px;
+      color: brown;
+      margin-bottom: 20px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .hostel-section {
+      display: flex;
+      flex-wrap: wrap;
+      background: yellow;
+      margin-bottom: 40px;
+    }
+    
+    .hostel {
+      flex-basis: calc(33.33% - 20px);
+      margin: 10px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .hostel img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    
+    .hostel h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-align: center;
+      color: rgb(9, 9, 126);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .hostel p {
+      color: #555;
+      margin-bottom: 10px;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      .hostel-section .hostel {
+        flex-basis: calc(50% - 20px);
+      }
+    }
+  </style>
+
+  <script>
+
+    function toggleSidebar() {
+      var sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('sidebar-open');
+  }
+
+    // Toggle bar functionality
+    const toggleBarContainer = document.querySelector('.toggle-bar-container');
+    const cancelIcon = document.querySelector('.cancel-icon');
+    
+    toggleBarContainer.addEventListener('click', () => {
+      toggleBarContainer.style.transform = 'translateY(-100%)';
+    });
+    
+    cancelIcon.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleBarContainer.style.transform = 'translateY(0)';
+    });
+  </script>
+
+</head>
+<body>
+<section>
+  <nav class="navbar">
+    <div class="navbar-brand">
+        <img src="expand_imgs/logo.jpg" style="height: auto; width: 150px;">
+    </div>
+    <ul class="navbar-menu">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+       
+        <div id="link">
+            <div class="login">
+                <button id="login"></button>
+            </div>
+        </div>
+        <div id="link">    
+            <div class="signup">
+                <button id="signup"></button>
+            </div>
+        </div>
+    </ul>
+    <div class="hamburger" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+        <img src="" style="margin-left: 0; width: 100%;">
+    </div>
+    <ul class="sidebar-menu">
+        
+        <li class="side-list">
+            <span class="fa-stack">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-home fa-stack-1x fa-inverse" id="fasfa"></i>
+            </span>
+            <span class="gap"></span>
+            <a href="index.html">Home</a>
+        </li>
+        <hr>
+        <li class="side-list">
+            <span class="fa-stack">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-campground fa-stack-1x fa-inverse" id="fasfa"></i>
+            </span>
+            <span class="gap"></span>
+            <a href="accommodation.html">Accomodation</a>
+        </li>
+        <hr>
+        <li class="side-list">
+            <span class="fa-stack">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-graduation-cap fa-stack-1x fa-inverse" id="fasfa"></i>
+            </span>
+            <span class="gap"></span>
+            <a href="tours.html">Safari Tours</a>
+        </li>
+        <hr>
+        <li class="side-list">
+            <span class="fa-stack">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-hiking fa-stack-1x fa-inverse" id="fasfa"></i>
+            </span>
+            <span class="gap"></span>
+            <a href="activities.html">Activities</a>
+        </li>
+        <hr>
+        <li class="side-list">
+            <span class="fa-stack">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-plane fa-stack-1x fa-inverse" id="fasfa"></i>
+            </span>
+            <span class="gap"></span>
+            <a href="destinations.html">Destinations</a>
+        </li>
+        <hr>
+        
+        <li class="side-list">
+            <span class="fa-stack">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-phone fa-stack-1x fa-inverse" id="fasfa"></i>
+            </span>
+            <span class="gap"></span>
+            <a href="contact.html">Contact</a>
+        </li>
+    </ul>
+
+</div>
+
+</section>
+
+<a href="https://wa.me/263713107257" class="whatsapp-button"><i class="fab fa-whatsapp"></i></a>
+  
+  <div class="container">
+    <h1>Accommodation</h1>
+    
+    <div class="hostel-section">
+      <div class="hostel">
+        <img src="imgs/karwe.jpg" alt="" />
+        <h2>Kariba 1 Tented Lodges</h2>
+        <p><strong>Base Camp</strong>
+          <div class="container_icon_base">
+            <div class="icon">
+              <i class="fas fa-utensils"></i>
+              <span>Dining</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-bed"></i>
+              <span>Bed</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-tent"></i>
+              <span>Tent</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-fire"></i>
+              <span></span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-map-marked-alt"></i>
+              <span>Explore</span>
+            </div>
+          </div>
+        <p><strong>There is always more there. Please come.</strong></p>
+      </div>
+      
+      <div class="hostel">
+        <img src="imgs/flyer.jpg" alt="" />
+        <h2>Vic Falls Lodge</h2>
+        <div class="container_icon_base">
+          <div class="icon">
+            <i class="fas fa-utensils"></i>
+            <span>Dining</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-bed"></i>
+            <span>Bed</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-toilet"></i>
+            <span>Ablution</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-tv"></i>
+            <span>TV</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-wifi"></i>
+            <span>WiFi</span>
+          </div>
+        </div>
+          
+        <p><strong>Visit for more. <a href="contact.html">Contact Page</a></strong></p>
+      </div>
+      
+      <div class="hostel">
+        <img src="imgs/campsite.jpg" alt="" />
+        <h2>Camp Sites</h2>
+        <div class="container_icon_base">
+          <div class="icon">
+            <i class="fas fa-utensils"></i>
+            <span>Food</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-bed"></i>
+            <span>Sleep</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-toilet"></i>
+            <span>Ablution</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-camera"></i>
+            <span>Make memories</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-tree"></i>
+            <span>forest</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-fire"></i>
+            <span>Fire</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hostel">
+        <img src="imgs/house_boats.jpg" alt="" />
+        <h2>House Boats</h2>
+          <div class="container_icon_base">
+            <div class="icon">
+              <i class="fas fa-utensils"></i>
+              <span>Food</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-bed"></i>
+              <span>Bed</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-toilet"></i>
+              <span>Ablution</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-camera"></i>
+              <span>Make memories</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-sun"></i>
+              <span>Gaze above</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-ship"></i>
+              <span>Dive</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-water"></i>
+              <span>Feel</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-fish"></i>
+              <span></span>
+            </div>
+          </div>
+        <p><strong></strong></p>
+        <p><strong><i>YOU IMAGINE, WE CREATE!</i></strong></p>
+      </div>
+
+      <div class="hostel">
+        <img src="imgs/lodge.jpeg" alt="" />
+        <h2 style="font-size: 18px;">Chimanimani</h2>
+        <p title="The hut at 1630 metres above sea level is not furnished. It acts as a refuge and rest point and may be used on a communal basis, but not exclusively by an individual party. The ablution and cooking facilities are ideal for up to 20 visitors. However, daring visitors have the option of spending the night in either Terry's or Peter's caves (disused mine shafts)."><strong>The mountain hut:</strong><i>Highlight</i>
+        <p><strong>Base Camp</strong>
+          <div class="container_icon_base">
+            <div class="icon">
+              <i class="fas fa-utensils"></i>
+              <span>Food</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-bed"></i>
+              <span>Bed</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-tv"></i>
+              <span>TV</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-wifi"></i>
+              <span>WiFi</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-shower"></i>
+              <span>Ablution</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-building"></i>
+              <span>Office</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-car"></i>
+              <span>Car Park</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-hiking"></i>
+              <span>Tours</span>
+            </div>
+            <div class="icon">
+              <i class="fas fa-landmark"></i>
+              <span>Heritage</span>
+            </div>
+          </div>
+          
+        </p>
+        <br />
+        <p><i>Free camping available anywhere excluding the base camp. Send us a<a href="contact.html"> message now.</a></i></p>
+      </div>
+
+      <div class="hostel">
+        <img src="new_img/l.jpeg" alt="" />
+        <h2>Camping infor</h2>
+
+        <p>Available for families and groups of up to 10 people, couples, etc</p>
+        <p>Option available for all destinations.</p>
+        <img src="expand_imgs/camping-infor.jpg" title="" />
+      </div>
+</div>
+      <div class="hostel">
+        <img src="new_img/lodge.jpg" alt="" />
+        <h2>Lodges</h2>
+        <div class="container_icon_base">
+          <div class="icon">
+            <i class="fas fa-utensils"></i>
+            <span>Dining</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-cocktail"></i>
+            <span>Cocktail</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-wine-glass"></i>
+            <span>Wine</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-bed"></i>
+            <span>Bed</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-tv"></i>
+            <span>TV</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-wifi"></i>
+            <span>WiFi</span>
+          </div>
+          <div class="icon">
+            <i class="fas fa-shower"></i>
+            <span>Ablution</span>
+          </div>
+        </div>
+        Areas with lodges:
+        <ul>
+          <li>Gonarezhou</li>
+          <li>Hwange</li>
+          <li>Vic falls</li>
+          <li>Darwendale</li>
+          <li>Inyanga</li>
+          <li>Matobo</li>
+          <li>Chimanimani</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2>Tasty meals</h2>
+
+  <div class="image-gallery">
+    <div class="image-container">
+      <img src="expand_imgs/dish.jpg" alt="dish">
+      <p>Nourishing</p>
+    </div>
+    <div class="image-container">
+      <img src="expand_imgs/dish_1.jpg" alt="dish">
+      <p>Delectable</p>
+    </div>
+    <div class="image-container">
+      <img src="expand_imgs/dish_2.jpg" alt="dish">
+      <p>Rich</p>
+    </div>
+    <div class="image-container">
+      <img src="expand_imgs/dish_3.jpg" alt="dish">
+      <p>Invigorating</p>
+    </div>
+    <div class="image-container">
+      <img src="expand_imgs/dish_4.jpg" alt="dish">
+      <p>Aromatic</p>
+    </div>
+    <div class="image-container">
+      <img src="expand_imgs/dish_5.jpg" alt="dish">
+      <p>Savory</p>
+    </div>
+  </div>
+  
+
+
+	  
+<div class="footer">
+
+  <div class="nxt2nxt">
+    <p>
+      <div style="font-size: 30px;"><i class="fas fa-map-marker-alt">Location:</i></div>
+      <div>1 Acacia Drive,</div>
+      <div>Heights, Kariba</div>
+      <div>Zimbabwe</div>
+
+      <div class="social-icons">
+        <i class="fas fa-envelope"></i>
+        <i class="fas fa-phone"></i>
+      </div>
+      <a href="tel: 0773224064" class="call-link">+263 77 322 4064</a>
+    </p>
+  </div>
+
+  
+      
+    
+  <div class="nxt2nxt">
+    <p>
+      <div style="font-size: 30px;">Kanyongo Safaris</div>
+      <div>Wildlife</div>
+      <div><a href="index.html">Home</a></div>
+      <div><a href="accommodation.html">Accomodation</a></div>
+      <div><a href="#">Safari tours</a></div>
+    </p>
+  </div>
+
+  <div class="nxt2nxt">
+    <div style="font-size: 30px;">Social Handles:</div>
+
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/knyongosafaris"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/@KanyongoSafaris"><i class="fab fa-youtube"></i></a>
+      <a href="https://wa.me/+263773224064"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  </div>
+  &copy; Kanyongo Safaris 2024
+  </div>
+
+  <i class="fa fa-code"></i>
+  Site by lanso: <i class="fab fa-whatsapp"></i> <a href="https://wa.me/+263714581271">+263714581271</a>
+  <a href="https://pin.it/2wCFs9CY2"><i class="fab fa-pinterest"></i></a> | <a href="https://zw.linkedin.com/in/adrian-mandipandira-707b28290"><i class="fab fa-linkedin"></i></a> | <a href="https://www.instagram.com/mandipandira?utm_source=qr&r=nametag"><i class="fab fa-instagram"></i></a> | <a href="https://www.facebook.com/share/mjvDG9TDqBZfEJkS/?mibextid=qi2Omg"><i class="fab fa-facebook"></i></a>
+</div>
+      
+  
+  
+</body>
+</html>

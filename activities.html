@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="black">
+	<title>Tourism Activities</title>
+	<link rel="stylesheet" href="activities.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="whatsapp.css">
+</head>
+<body bgcolor="yellow">
+	<!-- Navigation bar -->
+	<nav>
+		<center>
+			<div id="dis"><a href="index.html" class="nav-item"><i class="fa fa-home"></i> <span>Home</span></a></div>
+			<div id="dis"><a href="destinations.html" class="nav-item"><i class="fa fa-map-marker"></i> <span>Destinations</span></a></div>
+			<div id="dis"><a href="accommodation.html" class="nav-item"><i class="fa fa-search"></i> <span>Accommodation</span></a></div>
+			<div id="dis"><a href="contact.html" class="nav-item"><i class="fa fa-envelope"></i> <span>Contact</span></a></div>
+			<div id="dis"><a href="https://wa.me/+263714581271" class="nav-item"><i class="fa fa-code"></i> <span>Developer</span></a></div>
+		</center>
+	</nav>
+
+	<a href="https://wa.me/263713107257" class="whatsapp-button"><i class="fab fa-whatsapp"></i></a>
+
+
+	<section id="home">
+		<h2>Activities</h2>
+		<p>Get to know some of the popular activities done at the destinations listed below.</p>
+	</section>
+
+	<img src="expand_imgs/logo - Copy.jpg">
+	
+	<section id="destinations">
+		<h2>Destinations Summary</h2>
+		<ul>
+			<h3>Popular</h3>
+			<ul>
+				<li><a href="#hwange">Hwange</a></li>
+				<li><a href="#victoria-falls">Victoria Falls</a></li>
+			</ul>
+
+			<h3>The rest</h3>
+			<ul>
+				<li><a href="#gonarezhou">Gonarezhou</a></li>
+				<li><a href="#matobo">Matobo</a></li>
+				<li><a href="#inyanga">Inyanga</a></li>
+				<li><a href="#chimanimani">Chimanimani</a></li>
+				<li><a href="#kariba">Kariba</a></li>
+				<li><a href="#mana-pools">Mana Pools</a></li>
+			</ul>
+			
+		</ul>
+	</section>
+
+    <!-- Activities sections -->
+	<section id="hwange">
+		<h2>Hwange Activities</h2>
+		<div class="activity-container">
+			<div class="activity-item">
+				<img src="imgs/IMG-20240407-WA0021.jpg" alt="Hwange Image 1">
+				<h3>Game Drives</h3>
+				<p>Enhance your experience.</p>
+			</div>
+			<div class="activity-item">
+				<img src="expand_imgs/bushman2.jpg" alt="Hwange Image 2">
+				<h3>Bush Walks</h3>
+				<p>Explore our native culture.</p>
+			</div>
+			<div class="activity-item">
+				<img src="expand_imgs/camp.jpg" alt="Hwange Image 2">
+				<h3>Camping</h3>
+				<p>Share experience.</p>
+			</div>
+			<div class="activity-item">
+				<img src="activity/guides3.jpg" alt="Hwange Image 2">
+				<h3>Acquire new knowledge</h3>
+				<p>From experienced tour guides.</p>
+			</div>
+			<div class="activity-item">
+				<video controls width="75%" height="75%">
+					<source src="activity/watch1.mp4" type="video/mp4">
+				</video>
+				<h3>Game Watch</h3>
+				<p></p>
+			</div>
+		</div>
+	</section>
+
+    <section id="victoria-falls">
+		<h2>Victoria Falls</h2>
+		<div class="activity-container">
+			<div class="activity-item">
+				<img src="activity/a8.jpg" alt="Arial Vic Falls">
+				<h3>Flights</h3>
+			</div>
+			<div class="activity-item">
+				<img src="activity/a.jpg">
+				<h3>Helicopter Flights</h3>
+				<p></p>
+			</div>
+			<div class="activity-item">
+				<img src="activity/a6.jpg">
+				<h3>Bungee Jumping</h3>
+				<p></p>
+			</div>
+			<div class="activity-item">
+				<img src="expand_imgs/sundowner3.jpg">
+				<h3>Sundowners</h3>
+				<p></p>
+			</div>
+			<div class="activity-item">
+				<img src="activity/a2.jpg">
+				<h3>Book now to come over.</h3>
+				<p></p>
+			</div>
+			
+		</div>
+	</section>
+
+	<i>Please note that activities are not limited to the ones listed on this site. Feel free to reach out if you have inquiries on any social link that you may feel comfortble with (mentioned on this site).</i>
+
+	<section>
+
+		<style>
+
+			img {
+				max-width: 100%;
+				height: auto;
+				vertical-align: middle;
+				display: inline-block;
+			}
+	
+			.grid-wrapper > div {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+	
+			.grid-wrapper > div > img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				border: 5px;
+			}
+	
+			.grid-wrapper {
+				display: grid;
+				grid-gap: 10px;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				grid-auto-rows: 200px;
+				grid-auto-flow: dense;
+			}
+	
+			.grid-wrapper .wide {
+				grid-column: span 2;
+			}
+	
+			.grid-wrapper .tail {
+				grid-row: span 2;
+			}
+	
+			.grid-wrapper .big {
+				grid-column: span 2;
+				grid-row: span 2;
+			}
+	
+		</style>
+	
+		<div class="grid-wrapper">
+			<div>
+				<img src="activity/a.jpg">
+			</div>
+			<div>
+				<img src="activity/a1.jpg">
+			</div>
+			<div class="wide">
+				<img src="activity/a2.jpg">
+			</div>
+			<div class="tail">
+				<img src="activity/a3.jpg">
+			</div>
+			<div>
+				<img src="activity/a4.jpg">
+			</div>
+			<div class="big">
+				<img src="activity/a5.jpg">
+			</div>
+			<div>
+				<img src="activity/a6.jpg">
+			</div>
+			<div>
+				<img src="activity/a7.jpg">
+			</div>
+			<div class="wide">
+				<img src="activity/a8.jpg">
+			</div>
+			<div>
+				<img src="activity/a9.jpg">
+			</div>
+		</div>
+
+	</section>
+	
+		
+	<script src="activities.js"></script>
+</body>
+</html>
+
