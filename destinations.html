@@ -102,10 +102,10 @@
 	  </form>
 	</div>
 
-	<h1>Location Search</h1>
+	<h1>Maps</h1>
     <form id="search-form" action="https://www.google.com/maps" method="get" target="_blank">
-        <label for="location-input">Enter a location:</label>
-        <input type="text" id="location-input" name="q" placeholder="E.g., New York City">
+        <label for="location-input">Location:</label>
+        <input type="text" id="location-input" name="q" placeholder="E.g., Kariba">
         <button type="submit">Search</button>
     </form>
 
@@ -167,11 +167,15 @@
 		}
 	  </style>
 
+	<section style="display: none;">
+		
 	  <h1>Speech Functionality</h1>
 	  <strong>N.B</strong>: May not work on some browsers.
 
   <textarea id="textToSpeech" placeholder="Paste your text here"></textarea>
   <button onclick="playAudio()">Read</button>
+
+	</section>
 
   <script>
     // Function to play audio of the text
